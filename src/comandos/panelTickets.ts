@@ -10,10 +10,20 @@ export default async function panelTickets(
 
   const embedPanelTickets = simpleCord
     .crearEmbed()
-    .setTitle("Tickets / Soporte")
+    .setTitle("🖐 Soporte")
     .setThumbnail((await interaction.guild?.iconURL()) as string)
     .setDescription(
-      "Buenas Tardes, Días o Noches aquí podrás pedir ayuda de todo tipo ya sea bugs, reporte, sugerencia, etc . No dudes en acudir aquí que te ayudaremos lo mas rápido y amable posible . Recuerda ser totalmente honesto si el staff te pregunta algo, nosotros comprobaremos tu respuesta luego y si la consideramos fraudulenta eliminaremos tu Ticket o rechazaremos tu solicitud. Gracias"
+      `
+    Bienvenido a Soporte de Survicraft
+    
+    **🛑 NOTA**
+
+    Buenas tardes, días o noches. Aquí podrás pedir ayuda de todo tipo.
+
+    **🌞 IMPORTANTE**
+
+    Recuerda ser totalmente honesto si el staff te pregunta algo, nosotros comprobaremos tu respuesta, y si la consideramos fraudulenta eliminaremos tu ticket.
+    `
     )
     .setFooter({
       text: "Recuerda que intentaremos ayudarte en todo momento",
@@ -43,13 +53,13 @@ export default async function panelTickets(
       },
       {
         etiqueta: "Requi Media",
-        descripcion: "cambiar",
+        descripcion: "Asóciate a nosotros mediante videos o streams",
         valor: "requi-media",
         emoji: "🎥",
       },
       {
         etiqueta: "Padres de familia",
-        descripcion: "cambiar",
+        descripcion: "Pregunta por la actividad de tus hijos",
         valor: "padres-familia",
         emoji: "👪",
       },

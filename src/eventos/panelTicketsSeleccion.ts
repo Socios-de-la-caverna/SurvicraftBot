@@ -9,11 +9,14 @@ export default async function panelTicketsSeleccion(
 ) {
   if (interaction.customId !== "panel-tickets") return;
 
+  const autor = await interaction.guild?.members.fetch(interaction.user.id);
+  if (!autor?.permissions.has("Administrator")) return;
+
   if (interaction.values[0] == "bug") {
     const canalTicket = await simpleCord.crearTicket(
       interaction,
       categoriaTickets,
-      "🐛-bug-"
+      "🐛︙bug-"
     );
 
     const embedTicket = simpleCord
@@ -33,7 +36,7 @@ export default async function panelTicketsSeleccion(
     const canalTicket = await simpleCord.crearTicket(
       interaction,
       categoriaTickets,
-      "📝-reporte-"
+      "📝︙reporte-"
     );
 
     const embedTicket = simpleCord
@@ -53,7 +56,7 @@ export default async function panelTicketsSeleccion(
     const canalTicket = await simpleCord.crearTicket(
       interaction,
       categoriaTickets,
-      "📣-sugerencia-"
+      "📣︙sugerencia-"
     );
 
     const embedTicket = simpleCord
@@ -73,7 +76,7 @@ export default async function panelTicketsSeleccion(
     const canalTicket = await simpleCord.crearTicket(
       interaction,
       categoriaTickets,
-      "🎨-requi-media-"
+      "🎨︙requi-media-"
     );
 
     const embedTicket = simpleCord
@@ -93,7 +96,7 @@ export default async function panelTicketsSeleccion(
     const canalTicket = await simpleCord.crearTicket(
       interaction,
       categoriaTickets,
-      "👪-padres-familia-"
+      "👪︙padres-familia-"
     );
 
     const embedTicket = simpleCord
@@ -113,7 +116,7 @@ export default async function panelTicketsSeleccion(
     const canalTicket = await simpleCord.crearTicket(
       interaction,
       categoriaTickets,
-      "🛒-compras-tienda-"
+      "🛒︙compras-tienda-"
     );
 
     const embedTicket = simpleCord
@@ -133,7 +136,7 @@ export default async function panelTicketsSeleccion(
     const canalTicket = await simpleCord.crearTicket(
       interaction,
       categoriaTickets,
-      "👨‍🔧-staff-"
+      "👨‍🔧︙staff-"
     );
 
     const embedTicket = simpleCord

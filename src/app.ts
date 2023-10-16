@@ -23,9 +23,9 @@ client.on("ready", () => {
 });
 
 const simpleCord = new SimpleCord()
-  .setColor("#fb6567")
+  .setColor("#04b504")
   .setImagen(
-    "https://cdn.discordapp.com/attachments/1163349514619461714/1163489442623914115/Proyecto_nuevo.png"
+    "https://cdn.discordapp.com/attachments/1163349514619461714/1163596619254599680/Proyecto_nuevo.png"
   );
 
 client.on("guildMemberAdd", (member) => {
