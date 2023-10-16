@@ -3,6 +3,8 @@ import bienvenida from "./eventos/bienvenida";
 import SimpleCord from "./lib/SimpleCord";
 import panelTickets from "./comandos/panelTickets";
 import panelTicketsSeleccion from "./eventos/panelTicketsSeleccion";
+import expulsar from "./comandos/expulsar";
+import banear from "./comandos/banear";
 
 require("dotenv").config();
 const { TOKEN: token } = process.env;
@@ -35,6 +37,8 @@ client.on("guildMemberAdd", (member) => {
 client.on("interactionCreate", (interaction) => {
   if (interaction.isCommand()) {
     panelTickets(interaction, simpleCord);
+    expulsar(interaction, simpleCord);
+    banear(interaction, simpleCord);
   }
   if (interaction.isStringSelectMenu()) {
     panelTicketsSeleccion(interaction, simpleCord);

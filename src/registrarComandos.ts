@@ -16,6 +16,42 @@ const comandos = [
       },
     ],
   },
+  {
+    name: "banear",
+    description: "Banear a un usuario",
+    options: [
+      {
+        name: "usuario",
+        description: "Usuario que desea banear",
+        required: true,
+        type: ApplicationCommandOptionType.User,
+      },
+      {
+        name: "razon",
+        description: "Razon del baneo",
+        required: true,
+        type: ApplicationCommandOptionType.String,
+      },
+    ],
+  },
+  {
+    name: "expulsar",
+    description: "Expulsar a un usuario",
+    options: [
+      {
+        name: "usuario",
+        description: "Usuario que desea expulsar",
+        required: true,
+        type: ApplicationCommandOptionType.User,
+      },
+      {
+        name: "razon",
+        description: "Razon de la expulsión",
+        required: true,
+        type: ApplicationCommandOptionType.String,
+      },
+    ],
+  },
 ];
 
 (async () => {

@@ -7,6 +7,13 @@ export default async function panelTickets(
 ) {
   if (interaction.commandName !== "panel") return;
   if (interaction.options.get("tipo")?.value !== "tickets") return;
+  const autor = await interaction.guild?.members.fetch(interaction.user.id);
+  if (!autor?.permissions.has("Administrator")) {
+    return interaction.reply({
+      content: "No tienes permiso para ejecutar este comando",
+      ephemeral: true,
+    });
+  }
 
   const embedPanelTickets = simpleCord
     .crearEmbed()

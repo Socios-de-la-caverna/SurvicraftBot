@@ -9,9 +9,6 @@ export default async function panelTicketsSeleccion(
 ) {
   if (interaction.customId !== "panel-tickets") return;
 
-  const autor = await interaction.guild?.members.fetch(interaction.user.id);
-  if (!autor?.permissions.has("Administrator")) return;
-
   if (interaction.values[0] == "bug") {
     const canalTicket = await simpleCord.crearTicket(
       interaction,
