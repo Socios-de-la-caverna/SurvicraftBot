@@ -5,7 +5,9 @@ import {
   ColorResolvable,
   ComponentEmojiResolvable,
   EmbedBuilder,
+  PermissionFlagsBits,
   StringSelectMenuBuilder,
+  StringSelectMenuInteraction,
   StringSelectMenuOptionBuilder,
 } from "discord.js";
 
@@ -103,5 +105,27 @@ export default class SimpleCord {
       );
 
     return componentes;
+  }
+
+  public async crearTicket(
+    interaction: StringSelectMenuInteraction,
+    categoriaTickets: string,
+    canalTicketPrefijo: string
+  ) {
+    const canalTicket = await interaction.guild?.channels.create({
+      name: `${canalTicketPrefijo}-${interaction.user.username}`,
+      parent: categoriaTickets,
+      permissionOverwrites: [
+        {
+          id: interaction.guild.roles.everyone,
+          deny: [PermissionFlagsBits.ViewChannel],
+        },
+        {
+          id: interaction.user.id,
+          allow: [PermissionFlagsBits.ViewChannel],
+        },
+      ],
+    });
+    return canalTicket;
   }
 }

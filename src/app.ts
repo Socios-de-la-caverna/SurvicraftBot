@@ -2,6 +2,7 @@ import { Client, GatewayIntentBits } from "discord.js";
 import bienvenida from "./eventos/bienvenida";
 import SimpleCord from "./lib/SimpleCord";
 import panelTickets from "./comandos/panelTickets";
+import panelTicketsSeleccion from "./eventos/panelTicketsSeleccion";
 
 require("dotenv").config();
 const { TOKEN: token } = process.env;
@@ -32,6 +33,10 @@ client.on("guildMemberAdd", (member) => {
 });
 
 client.on("interactionCreate", (interaction) => {
-  if (!interaction.isCommand()) return;
-  panelTickets(interaction, simpleCord);
+  if (interaction.isCommand()) {
+    panelTickets(interaction, simpleCord);
+  }
+  if (interaction.isStringSelectMenu()) {
+    panelTicketsSeleccion(interaction, simpleCord);
+  }
 });
