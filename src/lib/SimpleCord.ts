@@ -35,8 +35,6 @@ type DetallesListaOpcion = {
 };
 
 export default class SimpleCord {
-  private titulo: string = "Panel";
-  private descripcion: string = "Descripción del panel";
   private color: ColorResolvable;
   private imagen: string;
 
@@ -52,8 +50,6 @@ export default class SimpleCord {
 
   public crearEmbed() {
     const embed = new EmbedBuilder();
-    embed.setTitle(this.titulo);
-    embed.setDescription(this.descripcion);
     if (this.color) embed.setColor(this.color);
     if (this.imagen) embed.setImage(this.imagen);
     return embed;
