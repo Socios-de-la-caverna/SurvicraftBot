@@ -52,6 +52,10 @@ const comandos = [
       },
     ],
   },
+  {
+    name: "cerrar-ticket",
+    description: "Cierra el ticket",
+  },
 ];
 
 (async () => {

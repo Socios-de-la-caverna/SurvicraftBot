@@ -2,9 +2,10 @@ import { Client, GatewayIntentBits } from "discord.js";
 import bienvenida from "./eventos/bienvenida";
 import SimpleCord from "./lib/SimpleCord";
 import panelTickets from "./comandos/panelTickets";
-import panelTicketsSeleccion from "./eventos/panelTicketsSeleccion";
 import expulsar from "./comandos/expulsar";
 import banear from "./comandos/banear";
+import crearTicket from "./eventos/crearTicket";
+import cerrarTicket from "./eventos/cerrarTicket";
 
 require("dotenv").config();
 const { TOKEN: token } = process.env;
@@ -41,6 +42,7 @@ client.on("interactionCreate", (interaction) => {
     banear(interaction, simpleCord);
   }
   if (interaction.isStringSelectMenu()) {
-    panelTicketsSeleccion(interaction, simpleCord);
+    crearTicket(interaction, simpleCord);
   }
+  cerrarTicket(interaction, simpleCord);
 });
