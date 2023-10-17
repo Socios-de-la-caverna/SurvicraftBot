@@ -123,7 +123,10 @@ export default class SimpleCord {
         },
         {
           id: rolesPermitidos,
-          allow: [PermissionFlagsBits.ViewChannel],
+          allow: [
+            PermissionFlagsBits.ViewChannel,
+            PermissionFlagsBits.SendMessages,
+          ],
         },
       ],
     });
