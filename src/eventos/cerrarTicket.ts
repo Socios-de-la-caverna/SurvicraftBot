@@ -10,17 +10,14 @@ import SimpleCord from "../lib/SimpleCord";
 
 require("dotenv").config();
 
-export default function cerrarTicket(
+export default async function cerrarTicket(
   interaction: Interaction,
   simpleCord: SimpleCord
 ) {
-  let continuar = true;
+  if (!interaction.isCommand() && !interaction.isButton()) return;
 
   if (interaction.isButton()) {
-    if (interaction.customId !== "cerrar-ticket") {
-      continuar = false;
-      return;
-    }
+    if (interaction.customId !== "cerrar-ticket") return;
     interaction.message.delete();
   }
 
@@ -28,11 +25,20 @@ export default function cerrarTicket(
     interaction.channelId as string
   ) as TextChannel;
   const categoriaTickets = process.env.CATEGORIA_TICKETS as string;
+  const rolStaff = process.env.ROL_STAFF as string;
 
   if (interaction.isCommand()) {
-    if (interaction.commandName !== "cerrar-ticket") {
-      continuar = false;
-      return;
+    if (interaction.commandName !== "cerrar-ticket") return;
+
+    const autor = await interaction.guild?.members.fetch(interaction.user.id);
+    if (
+      !autor?.roles.cache.has(rolStaff) &&
+      !autor?.permissions.has("Administrator")
+    ) {
+      return interaction.reply({
+        content: "No tienes permiso para ejecutar este comando",
+        ephemeral: true,
+      });
     }
     if (canalTicket?.parentId !== categoriaTickets) {
       return interaction.reply({
@@ -41,8 +47,6 @@ export default function cerrarTicket(
       });
     }
   }
-
-  if (!continuar) return;
 
   const rolEveryone = interaction.guild?.roles.everyone as Role;
 
