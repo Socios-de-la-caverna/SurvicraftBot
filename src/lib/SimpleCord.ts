@@ -106,7 +106,8 @@ export default class SimpleCord {
   public async crearTicket(
     interaction: StringSelectMenuInteraction,
     categoriaTickets: string,
-    canalTicketPrefijo: string
+    canalTicketPrefijo: string,
+    rolesPermitidos: string
   ) {
     const canalTicket = await interaction.guild?.channels.create({
       name: `${canalTicketPrefijo}-${interaction.user.username}`,
@@ -120,8 +121,13 @@ export default class SimpleCord {
           id: interaction.user.id,
           allow: [PermissionFlagsBits.ViewChannel],
         },
+        {
+          id: rolesPermitidos,
+          allow: [PermissionFlagsBits.ViewChannel],
+        },
       ],
     });
+
     return canalTicket;
   }
 }
