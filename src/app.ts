@@ -6,6 +6,7 @@ import expulsar from "./comandos/expulsar";
 import banear from "./comandos/banear";
 import crearTicket from "./eventos/crearTicket";
 import cerrarTicket from "./eventos/cerrarTicket";
+import reabrirTicket from "./eventos/reabrirTicket";
 
 require("dotenv").config();
 const { TOKEN: token } = process.env;
@@ -43,6 +44,9 @@ client.on("interactionCreate", (interaction) => {
   }
   if (interaction.isStringSelectMenu()) {
     crearTicket(interaction, simpleCord);
+  }
+  if (interaction.isButton()) {
+    reabrirTicket(interaction);
   }
   cerrarTicket(interaction, simpleCord);
 });
