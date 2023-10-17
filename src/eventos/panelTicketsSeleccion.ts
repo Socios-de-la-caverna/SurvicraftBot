@@ -9,143 +9,70 @@ export default async function panelTicketsSeleccion(
 ) {
   if (interaction.customId !== "panel-tickets") return;
 
-  if (interaction.values[0] == "bug") {
-    const canalTicket = await simpleCord.crearTicket(
-      interaction,
-      categoriaTickets,
-      "🐛︙bug-"
-    );
+  let canalTicketNombre = "";
+  let tituloEmbed = "";
+  let descripcionEmbed = "";
 
-    const embedTicket = simpleCord
-      .crearEmbed()
-      .setTitle("Reporte de bug")
-      .setDescription(
-        "Describe el bug que encontraste. Por favor, se lo más específico posible. Si es posible, incluye capturas de pantalla.\nEn unos momentos serás atendido por un miembro del staff."
-      );
-
-    canalTicket?.send({
-      content: `<@${interaction.user.id}>`,
-      embeds: [embedTicket],
-    });
+  switch (interaction.values[0]) {
+    case "bug":
+      canalTicketNombre = "🐛︙bug-";
+      tituloEmbed = "Reporte de bug";
+      descripcionEmbed =
+        "Describe el bug que encontraste. Por favor, se lo más específico posible. Si es posible, incluye capturas de pantalla.\nEn unos momentos serás atendido por un miembro del staff. ";
+      break;
+    case "reporte":
+      canalTicketNombre = "👮︙reporte-";
+      tituloEmbed = "Reporte de usuario";
+      descripcionEmbed =
+        "Describe el reporte que quieres hacer. Por favor, se lo más específico posible. Si es posible, incluye capturas de pantalla.\nEn unos momentos serás atendido por un miembro del staff. ";
+      break;
+    case "sugerencias":
+      canalTicketNombre = "📝︙sugerencias-";
+      tituloEmbed = "Sugerencia";
+      descripcionEmbed =
+        "Describe la sugerencia que quieres hacer. Por favor, se lo más específico posible.\nEn unos momentos serás atendido por un miembro del staff. ";
+      break;
+    case "requi-media":
+      canalTicketNombre = "🎥︙requi-media-";
+      tituloEmbed = "Requi Media";
+      descripcionEmbed =
+        "Describe la solicitud que quieres hacer.\nEn unos momentos serás atendido por un miembro del staff. ";
+      break;
+    case "padres-familia":
+      canalTicketNombre = "👪︙padres-familia-";
+      tituloEmbed = "Padres de familia";
+      descripcionEmbed =
+        "Describe la solicitud que quieres hacer.\nEn unos momentos serás atendido por un miembro del staff. ";
+      break;
+    case "compras-tienda":
+      canalTicketNombre = "🛒︙compras-tienda-";
+      tituloEmbed = "Compras en tienda";
+      descripcionEmbed =
+        "Describe la compra que quieres hacer.\nEn unos momentos serás atendido por un miembro del staff. ";
+      break;
+    case "staff":
+      canalTicketNombre = "👨‍🔧︙staff-";
+      tituloEmbed = "Solicitud de staff";
+      descripcionEmbed =
+        "Describe la solicitud que quieres hacer.\nEn unos momentos serás atendido por un miembro del staff. ";
+      break;
+    default:
+      break;
   }
 
-  if (interaction.values[0] == "reporte") {
-    const canalTicket = await simpleCord.crearTicket(
-      interaction,
-      categoriaTickets,
-      "📝︙reporte-"
-    );
+  const canalTicket = await simpleCord.crearTicket(
+    interaction,
+    categoriaTickets,
+    canalTicketNombre
+  );
 
-    const embedTicket = simpleCord
-      .crearEmbed()
-      .setTitle("Reporte de usuario")
-      .setDescription(
-        "Describe el comportamiento del usuario que deseas reportar. Por favor, se lo más específico posible. Si es posible, incluye capturas de pantalla.\nEn unos momentos serás atendido por un miembro del staff."
-      );
+  const embedTicket = simpleCord
+    .crearEmbed()
+    .setTitle(tituloEmbed)
+    .setDescription(descripcionEmbed);
 
-    canalTicket?.send({
-      content: `<@${interaction.user.id}>`,
-      embeds: [embedTicket],
-    });
-  }
-
-  if (interaction.values[0] == "sugerencias") {
-    const canalTicket = await simpleCord.crearTicket(
-      interaction,
-      categoriaTickets,
-      "📣︙sugerencia-"
-    );
-
-    const embedTicket = simpleCord
-      .crearEmbed()
-      .setTitle("Sugerencia")
-      .setDescription(
-        "Describe tu sugerencia. Por favor, se lo más específico posible.\nEn unos momentos serás atendido por un miembro del staff."
-      );
-
-    canalTicket?.send({
-      content: `<@${interaction.user.id}>`,
-      embeds: [embedTicket],
-    });
-  }
-
-  if (interaction.values[0] == "requi-media") {
-    const canalTicket = await simpleCord.crearTicket(
-      interaction,
-      categoriaTickets,
-      "🎨︙requi-media-"
-    );
-
-    const embedTicket = simpleCord
-      .crearEmbed()
-      .setTitle("Requisición de medios")
-      .setDescription(
-        "Describe los medios que necesitas. Por favor, se lo más específico posible.\nEn unos momentos serás atendido por un miembro del staff."
-      );
-
-    canalTicket?.send({
-      content: `<@${interaction.user.id}>`,
-      embeds: [embedTicket],
-    });
-  }
-
-  if (interaction.values[0] == "padres-familia") {
-    const canalTicket = await simpleCord.crearTicket(
-      interaction,
-      categoriaTickets,
-      "👪︙padres-familia-"
-    );
-
-    const embedTicket = simpleCord
-      .crearEmbed()
-      .setTitle("Padres de familia")
-      .setDescription(
-        "Describe tu situación. Por favor, se lo más específico posible.\nEn unos momentos serás atendido por un miembro del staff."
-      );
-
-    canalTicket?.send({
-      content: `<@${interaction.user.id}>`,
-      embeds: [embedTicket],
-    });
-  }
-
-  if (interaction.values[0] == "compras-tienda") {
-    const canalTicket = await simpleCord.crearTicket(
-      interaction,
-      categoriaTickets,
-      "🛒︙compras-tienda-"
-    );
-
-    const embedTicket = simpleCord
-      .crearEmbed()
-      .setTitle("Compras en tienda")
-      .setDescription(
-        "Explicanos que deseas comprar. Por favor, se lo más específico posible.\nEn unos momentos serás atendido por un miembro del staff."
-      );
-
-    canalTicket?.send({
-      content: `<@${interaction.user.id}>`,
-      embeds: [embedTicket],
-    });
-  }
-
-  if (interaction.values[0] == "staff") {
-    const canalTicket = await simpleCord.crearTicket(
-      interaction,
-      categoriaTickets,
-      "👨‍🔧︙staff-"
-    );
-
-    const embedTicket = simpleCord
-      .crearEmbed()
-      .setTitle("Solicitud de staff")
-      .setDescription(
-        "Describe tu solicitud. Por favor, se lo más específico posible.\nEn unos momentos serás atendido por un miembro del staff."
-      );
-
-    canalTicket?.send({
-      content: `<@${interaction.user.id}>`,
-      embeds: [embedTicket],
-    });
-  }
+  canalTicket?.send({
+    content: `<@${interaction.user.id}>`,
+    embeds: [embedTicket],
+  });
 }
