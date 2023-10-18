@@ -1,11 +1,4 @@
-import {
-  ButtonInteraction,
-  ButtonStyle,
-  CommandInteraction,
-  Interaction,
-  Role,
-  TextChannel,
-} from "discord.js";
+import { ButtonStyle, Interaction, Role, TextChannel } from "discord.js";
 import SimpleCord from "../lib/SimpleCord";
 
 require("dotenv").config();
