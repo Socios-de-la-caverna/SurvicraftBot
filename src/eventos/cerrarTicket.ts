@@ -46,6 +46,10 @@ export default async function cerrarTicket(
         ephemeral: true,
       });
     }
+    interaction.reply({
+      content: "Se ha cerrado el ticket",
+      ephemeral: true,
+    });
   }
 
   const rolEveryone = interaction.guild?.roles.everyone as Role;
