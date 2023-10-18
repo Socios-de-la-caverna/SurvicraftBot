@@ -1,5 +1,4 @@
 import { ButtonInteraction, Role, TextChannel } from "discord.js";
-import SimpleCord from "../lib/SimpleCord";
 
 const rolStaff = process.env.ROL_STAFF as string;
 
