@@ -7,6 +7,7 @@ import banear from "./comandos/banear";
 import crearTicket from "./eventos/crearTicket";
 import cerrarTicket from "./eventos/cerrarTicket";
 import reabrirTicket from "./eventos/reabrirTicket";
+import eliminarTicket from "./eventos/eliminarTicket";
 
 require("dotenv").config();
 const { TOKEN: token } = process.env;
@@ -47,6 +48,7 @@ client.on("interactionCreate", (interaction) => {
   }
   if (interaction.isButton()) {
     reabrirTicket(interaction);
+    eliminarTicket(interaction, simpleCord);
   }
   cerrarTicket(interaction, simpleCord);
 });
