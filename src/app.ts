@@ -9,6 +9,7 @@ import cerrarTicket from "./eventos/cerrarTicket";
 import reabrirTicket from "./eventos/reabrirTicket";
 import eliminarTicket from "./eventos/eliminarTicket";
 import transcribirTicket from "./eventos/transcribirTicket";
+import autoRol from "./eventos/autoRol";
 
 require("dotenv").config();
 const { TOKEN: token } = process.env;
@@ -48,6 +49,7 @@ const simpleCord = new SimpleCord()
 
 client.on("guildMemberAdd", (member) => {
   bienvenida(member, simpleCord);
+  autoRol(member);
 });
 
 client.on("interactionCreate", (interaction) => {
