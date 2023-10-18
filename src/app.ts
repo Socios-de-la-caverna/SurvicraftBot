@@ -10,6 +10,7 @@ import reabrirTicket from "./eventos/reabrirTicket";
 import eliminarTicket from "./eventos/eliminarTicket";
 import transcribirTicket from "./eventos/transcribirTicket";
 import autoRol from "./eventos/autoRol";
+import borrarMensajeMalicioso from "./eventos/moderacion/borrarMensajeMalicioso";
 
 require("dotenv").config();
 const { TOKEN: token } = process.env;
@@ -67,4 +68,8 @@ client.on("interactionCreate", (interaction) => {
     transcribirTicket(interaction, simpleCord);
   }
   cerrarTicket(interaction, simpleCord);
+});
+
+client.on("messageCreate", (message) => {
+  borrarMensajeMalicioso(message, simpleCord);
 });
