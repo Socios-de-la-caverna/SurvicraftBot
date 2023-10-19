@@ -1,4 +1,4 @@
-import { Message } from "discord.js";
+import { Message, PermissionFlagsBits } from "discord.js";
 import SimpleCord from "../../lib/SimpleCord";
 
 require("dotenv").config();
@@ -10,8 +10,8 @@ export default function borrarMensajeMalicioso(
 ) {
   const autor = message.guild?.members.cache.get(message.author.id);
   if (
-    autor?.roles.cache.has(rolStaff) &&
-    autor?.permissions.has("Administrator")
+    autor?.roles.cache.has(rolStaff) ||
+    autor?.permissions.has(PermissionFlagsBits.Administrator, true)
   )
     return;
 
