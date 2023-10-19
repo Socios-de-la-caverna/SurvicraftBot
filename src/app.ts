@@ -11,6 +11,7 @@ import eliminarTicket from "./eventos/eliminarTicket";
 import transcribirTicket from "./eventos/transcribirTicket";
 import autoRol from "./eventos/autoRol";
 import borrarMensajeMalicioso from "./eventos/moderacion/borrarMensajeMalicioso";
+import ip from "./comandos/ip";
 
 require("dotenv").config();
 const { TOKEN: token } = process.env;
@@ -72,4 +73,5 @@ client.on("interactionCreate", (interaction) => {
 
 client.on("messageCreate", (message) => {
   borrarMensajeMalicioso(message, simpleCord);
+  ip(message, simpleCord);
 });
