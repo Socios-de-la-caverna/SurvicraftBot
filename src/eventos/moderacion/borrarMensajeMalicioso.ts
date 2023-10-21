@@ -10,7 +10,7 @@ export default function borrarMensajeMalicioso(
 ) {
   const autor = message.guild?.members.cache.get(message.author.id);
   if (
-    autor?.roles.cache.has(rolStaff) ||
+    autor?.roles.cache.has(rolStaff) &&
     autor?.permissions.has(PermissionFlagsBits.Administrator, true)
   )
     return;
