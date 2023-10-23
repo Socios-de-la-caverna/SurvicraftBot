@@ -1,17 +1,15 @@
-import {
-  EmbedBuilder,
-  GuildMember,
-  ColorResolvable,
-  TextBasedChannel,
-} from "discord.js";
+import { GuildMember, TextBasedChannel } from "discord.js";
 import SimpleCord from "../lib/SimpleCord";
+
+require("dotenv").config();
+const canalBienvenidasId = process.env.CANAL_BIENVENIDAS as string;
 
 export default async function bienvenida(
   member: GuildMember,
   simpleCord: SimpleCord
 ) {
   const canalBienvenida = member.guild.channels.cache.get(
-    "1163245148688351295"
+    canalBienvenidasId
   ) as TextBasedChannel;
   if (!canalBienvenida)
     return console.log("No se encontró el canal de bienvenidas");
