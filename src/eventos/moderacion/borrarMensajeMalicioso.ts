@@ -8,6 +8,8 @@ export default function borrarMensajeMalicioso(
   message: Message,
   simpleCord: SimpleCord
 ) {
+  if (message.author.bot) return;
+
   const autor = message.guild?.members.cache.get(message.author.id);
   if (
     autor?.roles.cache.has(rolStaff) &&
