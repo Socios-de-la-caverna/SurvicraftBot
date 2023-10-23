@@ -28,5 +28,8 @@ export default async function bienvenida(
   Si quieres apoyarnos puedes invitar mas usuarios y así tener una comunidad mas desarrollada
   `);
 
-  canalBienvenida.send({ embeds: [embedBienvenida] });
+  canalBienvenida.send({
+    content: `<@${member.user.id}>`,
+    embeds: [embedBienvenida],
+  });
 }
