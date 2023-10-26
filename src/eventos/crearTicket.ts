@@ -89,4 +89,9 @@ export default async function crearTicket(
     embeds: [embedTicket],
     components: [embedBotones],
   });
+
+  interaction.reply({
+    content: `Ticket creado correctamente. <#${canalTicket?.id}>`,
+    ephemeral: true,
+  });
 }
