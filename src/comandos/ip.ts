@@ -6,11 +6,13 @@ require("dotenv").config();
 const minecraftServidorIp = process.env.MINECRAFT_SERVIDOR_IP as string;
 
 export default async function ip(message: Message, simpleCord: SimplecCord) {
-  if (!message.content.includes("ip")) return;
+  if (!message.content.includes("!ip")) return;
   const servidorInfo = await axios
     .get(`https://api.mcsrvstat.us/3/${minecraftServidorIp}`)
     .then((res) => res.data)
     .catch((err) => console.log(err));
+
+  if (!servidorInfo) return message.reply("El servidor no esta disponible");
 
   const embed = simpleCord
     .crearEmbed()
