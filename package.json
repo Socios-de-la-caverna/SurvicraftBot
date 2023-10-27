@@ -5,7 +5,8 @@
   "type": "module",
   "main": "src/app.ts",
   "scripts": {
-    "dev": "bun run --watch src/app.ts"
+    "dev": "bun run --watch src/app.ts",
+    "produccion": "./produccion.sh"
   },
   "author": "Anfitrion",
   "license": "ISC",
