@@ -41,6 +41,12 @@ export default async function panelTickets(
     espacioReservado: "Selecciona un departamento",
     opciones: [
       {
+        etiqueta: "Alianza",
+        descripcion: "Solicita una alianza entre servidores",
+        valor: "alianza",
+        emoji: "🤝"
+      },
+      {
         etiqueta: "Bug",
         descripcion: "Reporta un bug",
         valor: "bug",
