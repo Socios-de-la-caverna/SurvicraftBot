@@ -7,7 +7,7 @@ const rolStaff = process.env.ROL_STAFF as string;
 
 export default async function crearTicket(
   interaction: StringSelectMenuInteraction,
-  simpleCord: SimpleCord
+  simpleCord: SimpleCord,
 ) {
   if (interaction.customId !== "panel-tickets") return;
 
@@ -16,6 +16,12 @@ export default async function crearTicket(
   let descripcionEmbed = "";
 
   switch (interaction.values[0]) {
+    case "alianza":
+      canalTicketNombre = "🤝︙alianza-";
+      tituloEmbed = "Formar una alianza";
+      descripcionEmbed =
+        "Describe la solicitud que quieres hacer.\nEn unos momentos serás atendido por un miembro del staff. ";
+      break;
     case "bug":
       canalTicketNombre = "🐛︙bug-";
       tituloEmbed = "Reporte de bug";
@@ -67,7 +73,7 @@ export default async function crearTicket(
     interaction,
     categoriaTickets,
     canalTicketNombre,
-    rolStaff
+    rolStaff,
   );
 
   const embedTicket = simpleCord
