@@ -1,6 +1,6 @@
 import { ButtonInteraction, Role, TextChannel } from "discord.js";
 
-const rolStaff = process.env.ROL_STAFF as string;
+const rolStaff = process.env.ROL_TICKETS as string;
 
 export default function reabrirTicket(interaction: ButtonInteraction) {
   if (interaction.customId !== "reabrir-ticket") return;

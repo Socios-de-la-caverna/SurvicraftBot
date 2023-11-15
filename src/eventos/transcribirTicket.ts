@@ -3,7 +3,7 @@ import discordTranscripts from "discord-html-transcripts";
 import SimpleCord from "../lib/SimpleCord";
 
 require("dotenv").config();
-const rolStaff = process.env.ROL_STAFF as string;
+const rolStaff = process.env.ROL_TICKETS as string;
 const canalRegistrosTicketsId = process.env.CANAL_REGISTROS_TICKETS as string;
 
 export default async function transcribirTicket(

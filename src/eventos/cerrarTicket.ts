@@ -18,7 +18,7 @@ export default async function cerrarTicket(
     interaction.channelId as string
   ) as TextChannel;
   const categoriaTickets = process.env.CATEGORIA_TICKETS as string;
-  const rolStaff = process.env.ROL_STAFF as string;
+  const rolStaff = process.env.ROL_TICKETS as string;
 
   if (interaction.isCommand()) {
     if (interaction.commandName !== "cerrar-ticket") return;

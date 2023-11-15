@@ -3,7 +3,6 @@ import SimpleCord from "../lib/SimpleCord";
 
 require("dotenv").config();
 const categoriaTickets = process.env.CATEGORIA_TICKETS as string;
-const rolStaff = process.env.ROL_STAFF as string;
 
 export default async function crearTicket(
   interaction: StringSelectMenuInteraction,
